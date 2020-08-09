@@ -6,6 +6,7 @@ import TodoForm from './component/TodoForm';
 import PostList from './component/PostList';
 import Pagination from './component/Pagination';
 import PostFiltersForm from './component/PostFiltersForm';
+import Clock from './component/Clock';
 
 function App() {
   // State
@@ -25,6 +26,8 @@ function App() {
     _page: 1,
     title_like: ''
   })
+
+  const [showClock, setShowClock] = useState(true)
   // End State
 
   useEffect(() => {
@@ -84,6 +87,8 @@ function App() {
 
   return (
     <div className="app">
+      <button onClick={() => setShowClock(false)}>hide clock</button>
+      {showClock && <Clock />}
       <PostFiltersForm onSubmit={handleFilterChange} />
       <TodoList todo={todoList} onTodoClick={handleTodoClick} />
       <TodoForm onSubmit={handleTodoFormSubmit} />
